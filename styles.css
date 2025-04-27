@@ -1,0 +1,231 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0d0d0d;
+    color: #fff;
+    scroll-behavior: smooth;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header */
+  .header {
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: rgba(13, 13, 13, 0.95);
+    z-index: 100;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .hamburger {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  /* Hero Section */
+  .hero {
+    min-height: 100vh;
+    padding: 100px 20px;
+    text-align: center;
+    background: #0d0d0d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+    color: #aaa;
+  }
+  
+  .cta-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #ff5c00;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #e24b00;
+  }
+  
+  /* Sections */
+  .section {
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .about {
+    background: #111;
+  }
+  
+  .services {
+    background: #151515;
+  }
+  
+  .projects {
+    background: #111;
+  }
+  
+  .contact {
+    background: #151515;
+  }
+  
+  .section h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  .section p, .service-list {
+    font-size: 1rem;
+    color: #bbb;
+  }
+  
+  .service-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .service-list li {
+    margin-bottom: 10px;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #0d0d0d;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply Animations on Scroll */
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Menu Expanded Styling */
+.nav-links.show {
+  display: flex;
+  flex-direction: column;
+  background: #111;
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+.nav-links.show a {
+  padding: 1rem;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
+}
+
+.nav-links.show a:hover {
+  background: #ff5c00;
+}
+
+/* Update hamburger interaction for smaller screens */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+  }
+}
+
+/* Tech Stack Icons */
+.tech-stack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+.tech-icon {
+  font-size: 28px;
+  color: #bbb;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-icon:hover {
+  color: #ff5c00;
+  transform: translateY(-4px);
+}
+
+/* Optional: Label below icons */
+.tech-label {
+  display: none;
+  font-size: 0.8rem;
+  color: #ff5c00;
+  margin-top: 5px;
+  transition: opacity 0.3s ease;
+}
+
+/* Reveal label on hover */
+.tech-icon:hover + .tech-label {
+  display: block;
+  opacity: 1;
+}
