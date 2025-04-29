@@ -1,36 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MK&R Group offers premium mobile and tower crane hire and rigging services across South East Queensland, Australia.">
+  <link rel="icon" href="favicon.ico">
+  <meta property="og:title" content="MK&R | Mobile & Tower Crane Hire">
+  <meta property="og:description" content="Premium crane hire and rigging services with expert operators across Australia.">
+  <meta property="og:image" content="Public/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
   <title>MK&R | Mobile & Tower Crane Hire</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 70px;
+    scroll-timeline: auto;
+  }
+
+  section {
+    scroll-snap-align: start;
+  }
+</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<header class="header">
-  <div class="logo">MK&R</div>
-  <button class="hamburger" id="hamburger">&#9776;</button>
-  <nav class="nav-links" id="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+<header class="header" role="banner">
+  <a href="#hero" class="logo">
+    <img src="Public/MK&R Group Logo.png" alt="MK&R Logo" class="logo-img">
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
+
+  <nav class="nav-links" id="nav-links" aria-hidden="true" aria-label="Main navigation">
+    <button id="close-menu" class="close-menu" aria-label="Close menu">&times;</button>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
+<main id="main" role="main">
 <section id="hero" class="section hero">
-  <h1>Mobile & Tower Crane Hire, Australia Wide.</h1>
+  <h1>Mobile & Tower Crane Solutions, Servicing South East QLD.</h1>
   <p>Trusted by Australia's leading contractors.</p>
-  <a href="#contact" class="cta-button">Get a Quote</a>
+  <a href="#contact" class="cta-button">Enquire About Our Services Today</a>
 </section>
-
-<main>
 
 <section id="about" class="section about">
   <div class="container">
@@ -46,7 +62,7 @@
       <li>Mobile Crane Hire</li>
       <li>Tower Crane Hire</li>
       <li>Rigging Services</li>
-      <li>Labour Hire</li>
+      <li>Labour Solutions</li>
     </ul>
   </div>
 </section>
@@ -64,25 +80,24 @@
     <p>📞 1300 123 456</p>
     <p>✉️ info@mkandr.com.au</p>
     <p>📍 Brisbane, Australia</p>
-    <a href="mailto:info@mkandr.com.au" class="cta-button">Get a Quote</a>
+    <a href="contact.html" class="cta-button">Get a Quote</a>
   </div>
 </section>
-
 </main>
 <!-- Scroll to Top Button -->
-<button id="scrollTopBtn" title="Go to top">↑</button>
-<footer class="footer">
+<button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top">↑</button>
+<footer class="footer" role="contentinfo">
     <p>© 2025 MK&R. All rights reserved.</p>
   </footer>
 <!-- Section Dots Navigation -->
-<div class="section-dots">
+<nav class="section-dots" aria-label="Section navigation">
     <div class="dot" data-target="#hero"></div>
     <div class="dot" data-target="#about"></div>
     <div class="dot" data-target="#services"></div>
     <div class="dot" data-target="#projects"></div>
     <div class="dot" data-target="#contact"></div>
-  </div>
-<script src="script.js"></script>
+  </nav>
+<script src="script.js" defer></script>
 
 </body>
 </html>
