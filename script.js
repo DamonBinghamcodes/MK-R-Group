@@ -41,7 +41,7 @@ window.addEventListener('scroll', () => {
     if (sectionTop < window.innerHeight - 100) {
       setTimeout(() => {
         section.classList.add('visible');
-      }, index * 200); // Stagger effect by 200ms per section
+      }, index * 100); // Stagger effect by 100ms per section
     }
   });
 });
@@ -59,6 +59,23 @@ window.addEventListener('scroll', function() {
 
 scrollTopBtn.addEventListener('click', function() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Wait until the HTML is fully parsed
+document.addEventListener('DOMContentLoaded', () => {
+  // Find the scroll-to-top button by its ID
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (!scrollTopBtn) return; // If it doesn’t exist, stop here
+
+  // When the button is clicked…
+  scrollTopBtn.addEventListener('click', (e) => {
+    e.preventDefault();                                           // Prevent default link behaviour
+    document.documentElement.style.scrollSnapType = 'none';       // Temporarily disable snap-to-section
+    window.scrollTo({ top: 0, behavior: 'smooth' });              // Smooth scroll back to the very top
+    setTimeout(() => {
+      document.documentElement.style.scrollSnapType = 'y mandatory'; // Re-enable mandatory snapping
+    }, 600); // 600ms ≈ your scroll duration
+  });
 });
 
 // Section dots highlight on scroll
