@@ -11,12 +11,14 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
+  <header class="header" role="banner">
     <a href="index.html" class="logo">
       <img src="Public/MK&R Group Logo.png" alt="MK&R Logo" class="logo-img">
     </a>
-    <button class="hamburger" id="hamburger">&#9776;</button>
-    <nav class="nav-links" id="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
+  
+    <nav class="nav-links" id="nav-links" aria-hidden="true" aria-label="Main navigation">
+      <button id="close-menu" class="close-menu" aria-label="Close menu">&times;</button>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
