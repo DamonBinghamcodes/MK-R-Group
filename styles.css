@@ -183,7 +183,7 @@ html, body {
 }
 
 /* Footer */
-.footer {
+.footer .section {
   min-height: 60px;
   background-color: #0d0d0d;
   text-align: center;
