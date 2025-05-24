@@ -47,15 +47,18 @@ document.addEventListener('click', (e) => {
 // Enhanced smooth scrolling with offset for fixed navbar
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+        const href = this.getAttribute('href');
+        // Only prevent default for internal section links (anchors)
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const targetSection = document.querySelector(href);
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });
