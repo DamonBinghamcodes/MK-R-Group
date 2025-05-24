@@ -74,6 +74,7 @@ body {
 .nav.scrolled {
     padding: 15px 50px;
     background: rgba(10, 10, 10, 0.95);
+    background-color: transparent;
 }
 
 .nav-container {
@@ -84,15 +85,13 @@ body {
     margin: 0 auto;
 }
 
-.logo {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.logo img{
+    width: 220px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
 }
 
 .nav-menu {
