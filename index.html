@@ -14,7 +14,9 @@
     <nav class="nav" id="navbar">
         <div class="nav-container">
             <div class="logo">
-              <img src="Public/MK&R Group Logo.png" alt="MK&R Group Logo">
+                <a href="#home">
+                    <img src="Public/MK&R Group Logo.png" alt="MK&R Group Logo">
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">HOME</a></li>
@@ -35,6 +37,7 @@
         <div class="section-content">
             <h1>MOBILE AND TOWER CRANE SOLUTIONS</h1>
             <p class="mission-text">We specialise in skilled crane crew personnel solutions, tower crane operations, and mobile crane hire. Servicing Queensland and Australia throughout.</p>
+            <a href="#contact" class="cta-btn">Start Your Project</a>
         </div>
         <div class="scroll-indicator" onclick="scrollToNext()">
             <span class="scroll-text">Scroll</span>
@@ -54,22 +57,23 @@
                     <p class="section-text">
                         Construction projects minimize waste of valuable resources and do not conflict with existing infrastructure. A comprehensive approach to building can optimize any project, no matter how complex a development grows.
                     </p>
+                    <a href="#services" class="cta-btn">View Our Services</a>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <span class="stat-number">500+</span>
+                        <span class="stat-number" data-target="500">500+</span>
                         <span class="stat-label">Projects Completed</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">25+</span>
+                        <span class="stat-number" data-target="25">25+</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">100%</span>
+                        <span class="stat-number" data-target="100">100%</span>
                         <span class="stat-label">Safety Record</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">24/7</span>
+                        <span class="stat-number" data-target="24">24/7</span>
                         <span class="stat-label">Support Available</span>
                     </div>
                 </div>
@@ -87,6 +91,9 @@
             <div class="services-intro">
                 <h2>CONSTRUCTION SERVICES</h2>
                 <p>Comprehensive building solutions from concept to completion with innovative methodologies</p>
+                <div class="services-cta">
+                    <a href="#contact" class="cta-btn">Get Quote</a>
+                </div>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -129,6 +136,7 @@
                     <h2>GET IN TOUCH</h2>
                     <p>Ready to start your next project? Let's discuss how we can bring your vision to life with precision, quality, and innovation.</p>
                     <p>Our team of experts is standing by to provide consultation and develop solutions tailored to your specific requirements and project timeline.</p>
+                    <a href="tel:+61400000000" class="cta-btn">Call Now</a>
                 </div>
                 <div class="contact-form">
                     <form>
@@ -154,6 +162,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <span class="scroll-text">Top</span>
+        <div class="scroll-arrow"></div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
