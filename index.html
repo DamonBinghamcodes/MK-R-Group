@@ -1,25 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to MK&R Group</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK&R Group - Construction Excellence</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="header">
-    <div class="container">
-      <nav>
-        <img src="Public/MKR_Logo_2023_430x.webp" alt="MK&R Group Logo" class="logo">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="logo">MK&R GROUP</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">HOME</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#services" class="nav-link">SERVICES</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero">
+        <div class="section-content">
+            <h1>MK&R Group creates safe, reliable, and innovative construction solutions</h1>
+            <p class="mission-text">The mission: deliver exceptional quality, enable sustainable development and transform communities through precision engineering and cutting-edge construction methodologies</p>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToNext()">
+            <span class="scroll-text">Scroll</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="section-content">
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title">WHY MK&R?</h2>
+                    <p class="section-text">
+                        To solve the problem of inefficient construction processes, projects must be delivered with precision, which means either advanced planning or comprehensive expertise is needed. Unlike traditional contractors, MK&R combines cutting-edge technology with decades of experience.
+                    </p>
+                    <p class="section-text">
+                        Construction projects minimize waste of valuable resources and do not conflict with existing infrastructure. A comprehensive approach to building can optimize any project, no matter how complex a development grows.
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Safety Record</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToNext()">
+            <span class="scroll-text">Continue</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="section-content">
+            <div class="services-intro">
+                <h2>CONSTRUCTION SERVICES</h2>
+                <p>Comprehensive building solutions from concept to completion with innovative methodologies</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>COMMERCIAL CONSTRUCTION</h3>
+                    <p>Complete commercial building solutions from office complexes to retail spaces, designed for efficiency and built to last with modern construction methodologies and sustainable practices.</p>
+                </div>
+                <div class="service-card">
+                    <h3>RESIDENTIAL BUILDING</h3>
+                    <p>Custom homes and residential developments that blend functionality with modern design aesthetics, creating spaces people love to live in while incorporating smart home technologies.</p>
+                </div>
+                <div class="service-card">
+                    <h3>RENOVATIONS & EXTENSIONS</h3>
+                    <p>Transform existing spaces with expert renovation services that enhance value and functionality while respecting the original architecture and implementing modern efficiency standards.</p>
+                </div>
+                <div class="service-card">
+                    <h3>INFRASTRUCTURE PROJECTS</h3>
+                    <p>Large-scale infrastructure development including roads, utilities, and public facilities that serve communities for generations with sustainable and resilient design principles.</p>
+                </div>
+                <div class="service-card">
+                    <h3>INDUSTRIAL CONSTRUCTION</h3>
+                    <p>Specialized industrial facilities designed for manufacturing, warehousing, and distribution with focus on operational efficiency and advanced automation integration.</p>
+                </div>
+                <div class="service-card">
+                    <h3>PROJECT MANAGEMENT</h3>
+                    <p>End-to-end project coordination ensuring timely delivery within budget and to specification with transparent communication throughout and real-time progress tracking.</p>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToNext()">
+            <span class="scroll-text">Contact</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="section-content">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>GET IN TOUCH</h2>
+                    <p>Ready to start your next project? Let's discuss how we can bring your vision to life with precision, quality, and innovation.</p>
+                    <p>Our team of experts is standing by to provide consultation and develop solutions tailored to your specific requirements and project timeline.</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="project">Project Details</label>
+                            <textarea id="project" name="project" placeholder="Tell us about your project requirements, timeline, and vision..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 MK&R Group. All rights reserved. | Professional construction services across Australia</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
