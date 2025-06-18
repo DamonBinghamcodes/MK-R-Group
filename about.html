@@ -3,232 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - MK&R Group</title>
+    <title>About - MK&R Group</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reuse the same styles from index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Industrial Background */
+        .industrial-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            background-image: 
+                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .industrial-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(26, 26, 26, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .about-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Buttons */
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 4rem;
+            font-size: 1.5rem;
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3),
+                        -5px -5px 15px rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 8px 8px 20px rgba(0,0,0,0.4),
+                        -8px -8px 20px rgba(255,255,255,0.08);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(10px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                padding: 2rem;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.4rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-     <!-- Animated Background -->
-     <div class="animated-bg" id="animatedBg"></div>
+    <div class="industrial-bg"></div>
+    <div class="industrial-overlay"></div>
 
-     <!-- Navigation -->
-     <nav class="nav" id="navbar">
-         <div class="nav-container">
-             <div class="logo">
-                 <div style="width: 220px; height: 60px; background: linear-gradient(135deg, var(--accent-color), var(--text-primary)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; color: var(--primary-bg);">MK&R GROUP</div>
-             </div>
-             <ul class="nav-menu">
-                 <li><a href="index.html" class="nav-link">HOME</a></li>
-                 <li><a href="about.html" class="nav-link active">ABOUT</a></li>
-                 <li><a href="services.html" class="nav-link">SERVICES</a></li>
-                 <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-             </ul>
-             <div class="menu-toggle" id="menu-toggle">
-                 <span></span>
-                 <span></span>
-                 <span></span>
-             </div>
-         </div>
-     </nav>
- 
-     <!-- Hero Section -->
-     <section class="section hero">
-         <div class="section-content">
-             <h1>ABOUT MK&R GROUP</h1>
-             <p>Building Queensland's future with precision, innovation, and unwavering commitment to excellence. Discover the story behind our success and the values that drive everything we do.</p>
-         </div>
-         <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-text">Scroll</span>
-            <div class="scroll-arrow"></div>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="welcome.html">
+                    <img src="Public/MK&R Group Logo.png" alt="MK&R Group Logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="about.html" class="nav-link active">ABOUT</a></li>
+                <li><a href="services.html" class="nav-link">SERVICES</a></li>
+                <li><a href="projects.html" class="nav-link">PROJECTS</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-     </section>
- 
-     <!-- Our Story Section -->
-     <section class="section story">
-         <div class="section-content">
-             <div class="story-grid">
-                 <div class="story-content">
-                     <h2>OUR STORY</h2>
-                     <p>
-                         Founded over 25 years ago, MK&R Group began as a small family business with a simple vision: to deliver construction projects that exceed expectations while building lasting relationships with our clients.
-                     </p>
-                     <p>
-                         From humble beginnings with a single mobile crane, we've grown into Queensland's premier construction and crane solutions provider. Our journey has been marked by continuous innovation, strategic growth, and an unwavering commitment to safety and quality.
-                     </p>
-                     <p>
-                         Today, we're proud to have completed over 500 projects across Queensland and Australia, each one a testament to our dedication to excellence and our ability to turn complex challenges into successful outcomes.
-                     </p>
-                     <a href="#contact" class="cta-btn">Start Your Project</a>
-                 </div>
-                 <div class="story-image">
-                     <div>
-                         <h3>25+ Years of Excellence</h3>
-                         <p>Quarter-century of building trust, delivering results, and shaping Queensland's skyline with precision and innovation.</p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-text">Continue</span>
-            <div class="scroll-arrow"></div>
-        </div>
-     </section>
- 
-     <!-- Our Values Section -->
-     <section class="section values">
-         <div class="section-content">
-             <div class="values-intro">
-                 <h2>OUR CORE VALUES</h2>
-                 <p>These fundamental principles guide every decision we make and every project we undertake, ensuring consistent excellence in all our endeavors.</p>
-             </div>
-             <div class="values-grid">
-                 <div class="value-card">
-                     <div class="value-icon">S</div>
-                     <h3>Safety First</h3>
-                     <p>Safety isn't just a priority—it's our foundation. We maintain a 100% safety record through rigorous training, cutting-edge equipment, and unwavering vigilance on every site.</p>
-                 </div>
-                 <div class="value-card">
-                     <div class="value-icon">Q</div>
-                     <h3>Quality Excellence</h3>
-                     <p>We deliver superior craftsmanship and attention to detail in every project, using only the finest materials and proven methodologies to ensure lasting results.</p>
-                 </div>
-                 <div class="value-card">
-                     <div class="value-icon">I</div>
-                     <h3>Innovation</h3>
-                     <p>Embracing cutting-edge technology and modern construction techniques, we continuously evolve to provide more efficient and sustainable solutions.</p>
-                 </div>
-                 <div class="value-card">
-                     <div class="value-icon">R</div>
-                     <h3>Reliability</h3>
-                     <p>Our clients trust us to deliver on time, within budget, and to specification. This trust has been earned through decades of consistent performance.</p>
-                 </div>
-                 <div class="value-card">
-                     <div class="value-icon">T</div>
-                     <h3>Teamwork</h3>
-                     <p>Collaboration and communication are at the heart of our success. We work closely with clients, partners, and communities to achieve shared goals.</p>
-                 </div>
-                 <div class="value-card">
-                     <div class="value-icon">S</div>
-                     <h3>Sustainability</h3>
-                     <p>We're committed to environmentally responsible practices, implementing green building techniques and minimizing our ecological footprint.</p>
-                 </div>
-             </div>
-         </div>
-         <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-text">Continue</span>
-            <div class="scroll-arrow"></div>
-        </div>
-     </section>
- 
-     <!-- Our Team Section -->
-     <section class="section team">
-         <div class="section-content">
-             <div class="team-intro">
-                 <h2>MEET OUR TEAM</h2>
-                 <p>Behind every successful project is a dedicated team of professionals who bring expertise, passion, and commitment to excellence.</p>
-             </div>
-             <div class="team-grid">
-                 <div class="team-member">
-                     <div class="member-photo">MK</div>
-                     <h3>Michael Kennedy</h3>
-                     <div class="role">Managing Director</div>
-                     <p>With over 30 years in construction, Michael leads our strategic vision and maintains our commitment to quality and innovation across all projects.</p>
-                 </div>
-                 <div class="team-member">
-                     <div class="member-photo">RS</div>
-                     <h3>Robert Smith</h3>
-                     <div class="role">Operations Manager</div>
-                     <p>Robert oversees daily operations and ensures seamless project delivery. His expertise in logistics and team coordination keeps us running efficiently.</p>
-                 </div>
-                 <div class="team-member">
-                     <div class="member-photo">SJ</div>
-                     <h3>Sarah Johnson</h3>
-                     <div class="role">Safety Coordinator</div>
-                     <p>Sarah maintains our pristine safety record through comprehensive training programs and rigorous site safety protocols across all locations.</p>
-                 </div>
-                 <div class="team-member">
-                     <div class="member-photo">DW</div>
-                     <h3>David Wilson</h3>
-                     <div class="role">Lead Crane Operator</div>
-                     <p>David brings 20+ years of crane operation experience, specializing in complex lifts and precision operations for high-rise construction projects.</p>
-                 </div>
-                 <div class="team-member">
-                     <div class="member-photo">LB</div>
-                     <h3>Lisa Brown</h3>
-                     <div class="role">Project Coordinator</div>
-                     <p>Lisa ensures smooth communication between all stakeholders and maintains project timelines, keeping clients informed every step of the way.</p>
-                 </div>
-                 <div class="team-member">
-                     <div class="member-photo">JT</div>
-                     <h3>James Taylor</h3>
-                     <div class="role">Senior Engineer</div>
-                     <p>James provides technical expertise and innovative solutions for complex engineering challenges, ensuring structural integrity and efficiency.</p>
-                 </div>
-             </div>
-             <div style="text-align: center; margin-top: 3rem;">
-                 <a href="#contact" class="cta-btn">Join Our Team</a>
-             </div>
-         </div>
-     </section>
- 
-     <!-- Scroll to Top Button -->
-     <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
-         <span class="scroll-text">Top</span>
-         <div class="scroll-arrow"></div>
-     </div>
- 
-     <!-- Footer -->
-     <footer class="footer">
-         <div class="footer-content">
-             <!-- Logo and Description -->
-             <div class="footer-logo">
-                 <div class="footer-logo-placeholder">MK&R GROUP</div>
-                 <p class="footer-description">
-                     Leading construction and crane solutions across Queensland and Australia. 
-                     Delivering excellence in mobile crane hire, tower crane operations, and skilled crew personnel.
-                 </p>
-             </div>
- 
-             <!-- Site Map -->
-             <div class="footer-nav">
-                 <div class="footer-section">
-                     <h4>Quick Links</h4>
-                     <ul class="footer-links">
-                         <li><a href="index.html">Home</a></li>
-                         <li><a href="about.html">About Us</a></li>
-                         <li><a href="services.html">Our Services</a></li>
-                         <li><a href="contact.html">Contact</a></li>
-                     </ul>
-                 </div>
-                 
-                 <div class="footer-section">
-                     <h4>Services</h4>
-                     <ul class="footer-links">
-                         <li><a href="services.html">Commercial Construction</a></li>
-                         <li><a href="services.html">Residential Building</a></li>
-                         <li><a href="services.html">Renovations & Extensions</a></li>
-                         <li><a href="services.html">Infrastructure Projects</a></li>
-                         <li><a href="services.html">Industrial Construction</a></li>
-                         <li><a href="services.html">Project Management</a></li>
-                     </ul>
-                 </div>
-             </div>
- 
-             <!-- Contact Information -->
-             <div class="footer-contact">
-                 <h4>Get In Touch</h4>
-                 <div class="contact-info">
-                     <p><strong>Phone:</strong><br><a href="tel:+61400000000">+61 400 000 000</a></p>
-                     <p><strong>Email:</strong><br><a href="mailto:info@mkrgroup.com.au">info@mkrgroup.com.au</a></p>
-                     <p><strong>Location:</strong><br>Queensland, Australia</p>
-                     <p><strong>Hours:</strong><br>24/7 Support Available</p>
-                 </div>
-             </div>
-         </div>
- 
-         <div class="footer-bottom">
-             <p>&copy; 2024 MK&R Group. All rights reserved. | Professional construction services across Australia | ABN: 12 345 678 901</p>
-         </div>
-     </footer>
-     <script src="script.js"></script>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="about-section">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h1>About MK&R Group</h1>
+                    <p>With over 25 years of experience in the construction industry, MK&R Group has established itself as a leader in mobile and tower crane solutions across Queensland and Australia.</p>
+                    <p>Our commitment to excellence, safety, and innovation has made us the preferred choice for major construction projects, delivering reliable and efficient crane services that meet the highest industry standards.</p>
+                    <a href="contact.html" class="cta-btn">Get in Touch</a>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Safety Record</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support Available</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Intersection Observer for section animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.about-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Navigation scroll behavior
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 </body>
 </html>
