@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - MK&R Group</title>
+    <title>Contact - MK&R Group</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,10 +16,10 @@
             <a href="index.html" class="logo"><img src="Public/MK&R Group Logo.png" alt="MK&R Group Logo"></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Open menu">
                 <span></span><span></span><span></span>
@@ -32,18 +32,31 @@
         <section class="section-grey">
             <div class="section-card fade-in">
                 <div class="section-content">
-                    <h1>About MK&R Group</h1>
-                    <p>With over 25 years of experience in the construction industry, MK&R Group has established itself as a leader in mobile and tower crane solutions across Queensland and Australia.</p>
-                    <p>Our commitment to excellence, safety, and innovation has made us the preferred choice for major construction projects, delivering reliable and efficient crane services that meet the highest industry standards.</p>
+                    <h1>Contact Us</h1>
+                    <p>Ready to start your next project? Let's discuss how we can bring your vision to life with precision, quality, and innovation.</p>
+                    <form class="contact-form fade-in">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="project" name="project" placeholder="Tell us about your project requirements, timeline, and vision..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
-                <div class="section-image apple-style-img"></div>
             </div>
         </section>
         <section class="section-dark">
             <div class="section-card fade-in">
                 <div class="section-content">
-                    <h2>Our Experience</h2>
-                    <p>500+ Projects Completed<br>25+ Years Experience<br>100% Safety Record<br>24/7 Support Available</p>
+                    <h2>Our Office</h2>
+                    <p>Based in Queensland, serving all of Australia.<br>Phone: (Your Number)<br>Email: (Your Email)</p>
                 </div>
                 <div class="section-image apple-style-img"></div>
             </div>
@@ -67,4 +80,4 @@
 
     <script src="script.js" defer></script>
 </body>
-</html>
+</html> 
