@@ -3,114 +3,1212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MK&R Group</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>MK&R Group | Tower & Mobile Crane Solutions</title>
+    <style>
+        /* Apple Design System Variables */
+        :root {
+            /* Colors */
+            --apple-black: #000000;
+            --apple-white: #ffffff;
+            --apple-gray-01: #fbfbfd;
+            --apple-gray-02: #f5f5f7;
+            --apple-gray-03: #e8e8ed;
+            --apple-gray-04: #d2d2d7;
+            --apple-gray-05: #b0b0b6;
+            --apple-gray-06: #86868b;
+            --apple-gray-07: #515154;
+            --apple-gray-08: #333336;
+            --apple-gray-09: #1d1d1f;
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            
+            /* Typography */
+            --font-headline: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            
+            /* Spacing */
+            --nav-height: 44px;
+            --nav-padding: 22px;
+            --section-padding: 80px;
+            --container-width: 980px;
+            --container-wide: 1280px;
+            
+            /* Animations */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Base */
+        html {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            font-family: var(--font-body);
+            background: var(--apple-white);
+            color: var(--apple-gray-09);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Typography - Apple Style */
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            font-family: var(--font-headline);
+        }
+
+        h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            font-family: var(--font-headline);
+        }
+
+        h3 {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 600;
+            letter-spacing: 0.007em;
+            font-family: var(--font-headline);
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        .typography-hero-headline {
+            font-size: 80px;
+            line-height: 1.05;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+        }
+
+        .typography-intro {
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+        }
+
+        /* Apple Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(246, 246, 248, 0.9);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 9999;
+            transition: all 0.5s var(--ease-out);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+        }
+
+        nav.transparent {
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: none;
+        }
+
+        nav.transparent .nav-link,
+        nav.transparent .logo,
+        nav.transparent .phone-icon {
+            color: var(--apple-gray-02);
+        }
+
+        nav.transparent .phone-icon svg {
+            stroke: var(--apple-gray-02);
+        }
+
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 var(--nav-padding);
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            color: var(--apple-gray-09);
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out);
+            border-radius: 50%;
+        }
+
+        .phone-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--apple-gray-09);
+            transition: stroke 0.3s var(--ease-out);
+        }
+
+        .phone-icon:hover {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        nav.transparent .phone-icon:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--apple-gray-09);
+            text-decoration: none;
+            transition: opacity 0.3s var(--ease-out);
+            z-index: 10001;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--apple-gray-09);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            transition: opacity 0.3s var(--ease-out);
+            opacity: 0.8;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        /* Apple CTA Buttons */
+        .btn-primary {
+            display: inline-block;
+            background: var(--apple-blue);
+            color: var(--apple-white);
+            padding: 8px 16px;
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 400;
+            text-decoration: none;
+            transition: background-color 0.1s linear;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            background: var(--apple-blue-hover);
+        }
+
+        .btn-text {
+            color: var(--apple-blue);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: color 0.1s linear;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-text:hover {
+            color: var(--apple-blue-hover);
+        }
+
+        .btn-text::after {
+            content: '›';
+            font-size: 20px;
+            transition: transform 0.3s var(--ease-out);
+        }
+
+        .btn-text:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Apple Hamburger Menu */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 10001;
+            position: relative;
+            width: 48px;
+            height: 48px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 17px;
+            height: 1px;
+            background: var(--apple-gray-09);
+            transition: all 0.3s var(--ease-out);
+            transform-origin: center;
+        }
+
+        nav.transparent .menu-toggle span {
+            background: var(--apple-gray-02);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(3px, 3px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(3px, -3px);
+        }
+
+        /* Apple Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            flex-direction: column;
+            padding-top: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s var(--ease-out);
+            z-index: 10000;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            color: var(--apple-gray-02);
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 600;
+            padding: 20px 40px;
+            transition: all 0.3s var(--ease-out);
+            opacity: 0;
+            transform: translateY(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu.active a {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(var(--i) * 0.05s);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 50px;
+        }
+
+        /* Hero Section - Apple Style */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--nav-height) 0 0;
+            position: relative;
+            background: var(--apple-black);
+            color: var(--apple-white);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: var(--container-wide);
+            margin: 0 auto;
+            padding: 0 var(--nav-padding);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s var(--ease-out) forwards;
+        }
+
+        .hero p {
+            margin: 0 auto 40px;
+            max-width: 640px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s var(--ease-out) 0.2s forwards;
+            color: var(--apple-gray-05);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s var(--ease-out) 0.4s forwards;
+        }
+
+        /* Gradient Mesh Background */
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top left, rgba(0, 113, 227, 0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse at bottom right, rgba(0, 113, 227, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* Sections */
+        section {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        .section-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--nav-padding);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--apple-gray-06);
+            font-size: 21px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Stats - Apple Style */
+        .stats {
+            background: var(--apple-gray-02);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 60px;
+            text-align: center;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stat-item.visible {
+            animation: fadeInUp 0.8s var(--ease-out) forwards;
+        }
+
+        .stat-number {
+            font-size: 64px;
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            color: var(--apple-gray-09);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 17px;
+            color: var(--apple-gray-06);
+        }
+
+        /* Services - Apple Card Style */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--apple-gray-02);
+            border-radius: 18px;
+            padding: 40px;
+            transition: all 0.3s var(--ease-out);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            animation: fadeInUp 0.8s var(--ease-out) forwards;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+
+        .service-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--apple-blue);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--apple-gray-06);
+            font-size: 14px;
+            line-height: 1.42859;
+        }
+
+        /* About - Apple Style */
+        .about {
+            background: var(--apple-white);
+            padding: 120px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            color: var(--apple-gray-06);
+            margin-bottom: 20px;
+            font-size: 21px;
+            line-height: 1.381;
+        }
+
+        .about-cta {
+            margin-top: 30px;
+        }
+
+        .about-image {
+            height: 500px;
+            background: var(--apple-gray-02);
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Projects - Apple Style */
+        .projects {
+            background: var(--apple-gray-02);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--apple-white);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.3s var(--ease-out);
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .project-card.visible {
+            animation: scaleIn 0.8s var(--ease-out) forwards;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-image {
+            height: 280px;
+            background: var(--apple-gray-03);
+            position: relative;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-tag {
+            font-size: 12px;
+            color: var(--apple-gray-06);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+
+        .project-content p {
+            color: var(--apple-gray-06);
+            font-size: 14px;
+            line-height: 1.42859;
+        }
+
+        /* Contact - Apple Style */
+        .contact {
+            background: var(--apple-white);
+            padding: 120px 0;
+        }
+
+        .contact-container {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 0 var(--nav-padding);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .contact-form.visible {
+            animation: fadeInUp 0.8s var(--ease-out) forwards;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--apple-gray-09);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 1px solid var(--apple-gray-04);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 16px;
+            background: var(--apple-white);
+            color: var(--apple-gray-09);
+            transition: all 0.2s var(--ease-out);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--apple-blue);
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            margin-top: 20px;
+            font-size: 17px;
+            padding: 12px 30px;
+        }
+
+        /* Footer - Apple Style */
+        footer {
+            background: var(--apple-gray-02);
+            padding: 40px 0;
+            border-top: 1px solid var(--apple-gray-03);
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--nav-padding);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--apple-gray-06);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.1s linear;
+        }
+
+        .footer-links a:hover {
+            color: var(--apple-gray-09);
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: var(--apple-gray-06);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .phone-icon {
+                display: none;
+            }
+
+            .nav-container {
+                grid-template-columns: 1fr auto;
+            }
+
+            .nav-center {
+                justify-content: flex-start;
+            }
+
+            .nav-right {
+                justify-content: flex-end;
+            }
+
+            h1 {
+                font-size: 64px;
+            }
+
+            .typography-hero-headline {
+                font-size: 96px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --nav-padding: 16px;
+                --section-padding: 60px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            .typography-hero-headline {
+                font-size: 48px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .stat-number {
+                font-size: 48px;
+            }
+        }
+
+        /* Scroll to Top - Apple Style */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.7);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            color: var(--apple-white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s var(--ease-out);
+            z-index: 998;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
-    <!-- Apple-style Sticky Nav -->
-    <nav class="apple-nav">
-        <div class="nav-content">
-            <a href="index.html" class="logo"><img src="Public/MK&R Group Logo.png" alt="MK&R Group Logo"></a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Open menu">
-                <span></span><span></span><span></span>
-            </button>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="tel:1300000000" class="phone-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="#hero" class="logo">MK&R</a>
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#quote" class="btn-primary">Get a Quote</a></li>
+                </ul>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero apple-bg-gradient">
-        <div class="hero-content">
-            <h1>Mobile and Tower Crane Solutions.</h1>
-            <p>We specialise in skilled crane crew personnel solutions, tower crane operations, and mobile crane hire. Servicing Queensland and Australia throughout.</p>
-            <a href="#contact" class="btn btn-primary">Start Your Project</a>
-        </div>
-        <div class="hero-image apple-style-img"></div>
-    </header>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services" style="--i: 0;">Services</a>
+        <a href="#about" style="--i: 1;">About</a>
+        <a href="#projects" style="--i: 2;">Projects</a>
+        <a href="#contact" style="--i: 3;">Contact</a>
+        <a href="tel:1300000000" style="--i: 4;">Call Now</a>
+        <a href="#quote" style="--i: 5;">Get a Quote</a>
+    </div>
 
-    <!-- About Section -->
-    <section class="section-card">
-        <div class="section-content">
-            <h2>About MK&R Group</h2>
-            <p>With over 25 years of experience in the construction industry, MK&R Group has established itself as a leader in mobile and tower crane solutions across Queensland and Australia.</p>
-            <p>Our commitment to excellence, safety, and innovation has made us the preferred choice for major construction projects, delivering reliable and efficient crane services that meet the highest industry standards.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-gradient"></div>
+        <div class="hero-content">
+            <h1 class="typography-hero-headline">Elevating Construction<br>in Queensland.</h1>
+            <p class="typography-intro">Premium tower crane, mobile crane, and skilled personnel solutions for builders and construction sites across South East Queensland.</p>
+            <div class="hero-cta">
+                <a href="#quote" class="btn-primary">Get a Quote</a>
+                <a href="#services" class="btn-text">Learn more</a>
+            </div>
         </div>
-        <div class="section-image apple-style-img"></div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="section-content">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="500">0</span>
+                    <p class="stat-label">Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="25">0</span>
+                    <p class="stat-label">Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="100">0</span>
+                    <p class="stat-label">Safety Record</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">0</span>
+                    <p class="stat-label">Hour Support</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Services Section -->
-    <section class="section-card">
+    <section class="services" id="services">
         <div class="section-content">
-            <h2>Our Services</h2>
-            <div class="services-list">
-                <div class="service-item">
-                    <div class="service-img apple-style-img"></div>
-                    <h3>Mobile Crane Hire</h3>
-                    <p>Professional mobile crane services for construction projects of all sizes. Our experienced operators ensure safe and efficient operations.</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-img apple-style-img"></div>
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive crane solutions engineered for modern construction.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" style="--i: 0;">
+                    <div class="service-icon">🏗️</div>
                     <h3>Tower Crane Operations</h3>
                     <p>Complete tower crane solutions including installation, operation, maintenance, and dismantling for high-rise construction projects.</p>
                 </div>
-                <div class="service-item">
-                    <div class="service-img apple-style-img"></div>
-                    <h3>Crane Crew Personnel</h3>
-                    <p>Skilled and certified crane operators, riggers, and support personnel available for short-term and long-term project requirements.</p>
+                <div class="service-card" style="--i: 1;">
+                    <div class="service-icon">🚛</div>
+                    <h3>Mobile Crane Hire</h3>
+                    <p>Professional mobile crane services for construction projects of all sizes with experienced operators ensuring safe operations.</p>
                 </div>
+                <div class="service-card" style="--i: 2;">
+                    <div class="service-icon">👷</div>
+                    <h3>Skilled Personnel</h3>
+                    <p>Certified crane operators, riggers, and support personnel available for short-term and long-term project requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-content">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Building Queensland's Future.</h2>
+                    <p>With over 25 years of experience in the construction industry, MK&R Group has established itself as a leader in mobile and tower crane solutions.</p>
+                    <p>Our commitment to excellence, safety, and innovation has made us the preferred choice for major construction projects across Queensland and Australia.</p>
+                    <div class="about-cta">
+                        <a href="#contact" class="btn-text">Partner with us</a>
+                    </div>
+                </div>
+                <div class="about-image"></div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="section-card">
+    <section class="projects" id="projects">
         <div class="section-content">
-            <h2>Featured Projects</h2>
-            <div class="projects-list">
-                <div class="project-item">
-                    <div class="project-img apple-style-img"></div>
-                    <h3>Commercial Tower Crane Installation</h3>
-                    <p>Complete tower crane installation and operation for major commercial development in Brisbane CBD.</p>
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Recent developments showcasing our expertise.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" style="--i: 0;">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <p class="project-tag">Commercial</p>
+                        <h3>Brisbane CBD Tower</h3>
+                        <p>Complete tower crane installation and operation for a 45-story commercial development.</p>
+                    </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-img apple-style-img"></div>
-                    <h3>Residential Tower Project</h3>
-                    <p>Mobile and tower crane solutions for high-rise residential development on the Gold Coast.</p>
+                <div class="project-card" style="--i: 1;">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <p class="project-tag">Residential</p>
+                        <h3>Gold Coast Skyline</h3>
+                        <p>Mobile and tower crane solutions for luxury high-rise residential development.</p>
+                    </div>
+                </div>
+                <div class="project-card" style="--i: 2;">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <p class="project-tag">Infrastructure</p>
+                        <h3>Gateway Bridge</h3>
+                        <p>Specialized crane operations for critical infrastructure expansion project.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA Section -->
-    <section class="section-card" id="contact">
-        <div class="section-content">
-            <h2>Contact Us</h2>
-            <p>Ready to start your next project? Let's discuss how we can bring your vision to life with precision, quality, and innovation.</p>
-            <a href="contact.html" class="btn btn-primary">Contact MK&R Group</a>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <h2>Let's work together.</h2>
+                <p>Ready to elevate your next project? Get in touch for a custom quote.</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="project">Project details</label>
+                    <textarea id="project" name="project" placeholder="Tell us about your project requirements, timeline, and location..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary form-submit">Send Message</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="apple-footer">
+    <footer>
         <div class="footer-content">
-            <div class="footer-logo"><img src="Public/MK&R Group Logo.png" alt="MK&R Group Logo"></div>
             <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="projects.html">Projects</a>
-                <a href="contact.html">Contact</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="footer-copy">&copy; 2024 MK&R Group. All rights reserved.</div>
+            <p class="footer-copy">Copyright © 2024 MK&R Group. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        const navbar = document.getElementById('navbar');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 100;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar Transparency on Scroll
+        const heroSection = document.querySelector('.hero');
+        
+        function updateNavbarTransparency() {
+            const currentScroll = window.pageYOffset;
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            
+            if (currentScroll < heroBottom - 100) {
+                navbar.classList.add('transparent');
+            } else {
+                navbar.classList.remove('transparent');
+            }
+        }
+        
+        // Initial check on page load
+        updateNavbarTransparency();
+        
+        // Update on scroll
+        window.addEventListener('scroll', updateNavbarTransparency);
+
+        // Scroll to Top
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.classList.contains('stat-item')) {
+                        const counter = entry.target.querySelector('.stat-number');
+                        if (counter && !counter.classList.contains('counted')) {
+                            animateCounter(counter);
+                            counter.classList.add('counted');
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.stat-item, .service-card, .project-card, .contact-form').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter Animation
+        function animateCounter(counter) {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.ceil(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target + (counter.getAttribute('data-target') === '100' ? '%' : '+');
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent';
+                submitBtn.style.background = '#34c759';
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
