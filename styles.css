@@ -2320,7 +2320,7 @@ footer {
 /* Home Page Mobile First Responsive Design */
 
 /* Extra Small Mobile: 320px-375px */
-@media (max-width: 375px) {
+@media (max-width: 515px) {
     .hero {
         min-height: calc(100vh - var(--nav-height));
         height: auto;
@@ -2390,91 +2390,8 @@ footer {
     }
 }
 
-/* Small Mobile: 376px-480px */
-@media (min-width: 376px) and (max-width: 480px) {
-    .hero {
-        min-height: calc(100vh - var(--nav-height));
-        height: auto;
-        padding-top: var(--nav-height);
-        padding-bottom: 1rem;
-        align-items: flex-start;
-    }
-
-    .hero-content {
-        padding: 1rem;
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: calc(100vh - var(--nav-height) - 2rem);
-    }
-
-    .hero-title {
-        font-size: clamp(1.6rem, 7vw, 2.2rem);
-        margin-bottom: 0.8rem;
-        line-height: 1.15;
-    }
-
-    .hero-subtitle {
-        font-size: clamp(0.9rem, 4vw, 1.1rem);
-        margin-bottom: 1.5rem;
-        padding: 0;
-        line-height: 1.4;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-        margin-bottom: 1.5rem;
-        flex-shrink: 0;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-        width: 100%;
-        max-width: 260px;
-        padding: 0.9rem 1.5rem;
-        font-size: 0.95rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.8rem;
-        margin-top: 1rem;
-        flex-shrink: 0;
-    }
-
-    .stat-card {
-        padding: 1.2rem 0.8rem;
-    }
-
-    .stat-number {
-        font-size: 1.6rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .stat-label {
-        font-size: 0.75rem;
-        line-height: 1.2;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .service-card {
-        padding: 1.5rem;
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-}
-
 /* Large Mobile: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 516px) and (max-width: 768px) {
     .hero {
         min-height: calc(100vh - var(--nav-height));
         padding-top: var(--nav-height);
